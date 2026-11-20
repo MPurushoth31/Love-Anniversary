@@ -1,0 +1,95 @@
+/* Compact responsive Memory Archive. The Moments gallery is intentionally separate from Journey. */
+.memory-archive {
+  position:relative; isolation:isolate; width:min(1180px,calc(100% - 2rem)); margin:2rem auto; padding:clamp(1rem,3vw,2rem);
+  overflow:hidden; border:1px solid rgba(245,210,122,.18); border-radius:25px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(139,10,31,.27),transparent 56%),linear-gradient(155deg,rgba(19,5,11,.96),rgba(8,4,8,.98) 65%,rgba(28,6,13,.97));
+  box-shadow:0 24px 70px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.035); text-align:left;
+}
+.memory-archive::before { content:""; position:absolute; z-index:-1; width:19rem; height:19rem; top:15%; right:-14rem; border-radius:50%; background:#e63950; filter:blur(85px); opacity:.12; pointer-events:none; }
+.archive-cover { width:min(100%,520px); margin:0 auto 1rem; overflow:hidden; border:1px solid rgba(245,210,122,.2); border-radius:14px; background:#10060b; box-shadow:0 14px 38px rgba(0,0,0,.32); }
+.archive-cover img { display:block; width:100%; height:auto; aspect-ratio:1200/630; object-fit:contain; }
+.archive-header { max-width:44rem; margin:0 auto .95rem; text-align:center; }
+.archive-eyebrow { margin:0; color:var(--ann-gold); font-size:.58rem; font-weight:700; letter-spacing:.19em; line-height:1.5; }
+.archive-header h2 { margin:.26rem auto 0; color:#fff0d8; font-family:var(--serif); font-size:clamp(1.55rem,4.3vw,2.4rem); font-weight:500; line-height:1.12; text-wrap:balance; }
+.archive-timeline { position:relative; display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); align-items:start; gap:.3rem; width:100%; margin:0 auto .8rem; padding:.25rem 0 .5rem; }
+.archive-timeline::before { content:""; position:absolute; z-index:0; top:1rem; left:3.4%; right:3.4%; height:1px; background:linear-gradient(90deg,rgba(245,210,122,.15),rgba(245,210,122,.62),rgba(245,210,122,.15)); }
+.archive-year-btn { position:relative; z-index:1; display:flex; min-width:0; min-height:2.65rem; flex-direction:column; align-items:center; justify-content:flex-start; gap:.4rem; padding:.08rem .04rem; border:0; border-radius:9px; background:transparent; box-shadow:none; color:rgba(255,229,213,.58); cursor:pointer; font-family:var(--sans); transition:color .2s ease,transform .2s ease; }
+.archive-year-btn span { font-size:clamp(.54rem,.85vw,.7rem); font-weight:600; letter-spacing:0; white-space:nowrap; }
+.archive-year-btn i { display:block; width:8px; height:8px; border:1px solid rgba(245,210,122,.65); border-radius:50%; background:#18070e; box-shadow:0 0 0 3px rgba(245,210,122,.055); transition:background .2s ease,box-shadow .2s ease,transform .2s ease; }
+.archive-year-btn:hover { color:#fff0c5; transform:translateY(-1px); }
+.archive-year-btn[aria-pressed="true"] { color:var(--ann-gold-light); }
+.archive-year-btn[aria-pressed="true"] i { width:11px; height:11px; margin-top:-1px; border-color:#fff0c5; background:#d72649; box-shadow:0 0 0 4px rgba(245,210,122,.12),0 0 15px rgba(230,57,80,.7); }
+.archive-year-btn:focus-visible { outline:2px solid var(--ann-gold); outline-offset:2px; }
+.archive-year-head { display:flex; align-items:flex-end; justify-content:space-between; gap:.8rem; width:100%; margin:.05rem 0 .3rem; padding-top:.75rem; border-top:1px solid rgba(245,210,122,.14); }
+.archive-year-copy { min-width:0; }
+.archive-year-copy>span { color:var(--ann-gold); font-size:.5rem; font-weight:700; letter-spacing:.16em; }
+.archive-year-copy h3 { margin:.06rem 0 0; color:#fff0d8; font-family:var(--serif); font-size:clamp(2.25rem,5.5vw,3.6rem); font-weight:500; line-height:.98; letter-spacing:-.04em; }
+.archive-year-copy p { margin:.22rem 0 0; color:#f2c4cb; font-family:var(--serif); font-size:clamp(.82rem,1.8vw,1.08rem); font-style:italic; line-height:1.28; overflow-wrap:anywhere; }
+.archive-year-count { flex:0 0 auto; max-width:45%; padding:.34rem .58rem; border:1px solid rgba(245,210,122,.2); border-radius:999px; background:rgba(255,255,255,.035); color:rgba(255,229,213,.72); font-size:.56rem; line-height:1.3; text-align:center; }
+.archive-note { max-width:55rem; margin:.48rem 0 .78rem; color:rgba(255,232,225,.77); font-family:var(--read); font-size:clamp(.72rem,1.4vw,.85rem); line-height:1.58; }
+.archive-note[hidden] { display:none; }
+.archive-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-auto-flow:row; gap:clamp(.6rem,1.3vw,.95rem); align-items:start; width:100%; }
+.archive-card { min-width:0; margin:0; padding:.42rem .42rem .34rem; overflow:hidden; border:1px solid rgba(245,210,122,.2); border-radius:12px; background:linear-gradient(150deg,rgba(255,255,255,.065),rgba(255,255,255,.025)); box-shadow:0 12px 28px rgba(0,0,0,.25); opacity:0; transform:translateY(10px); animation:archiveCardIn .45s ease var(--archive-delay,0s) both; cursor:zoom-in; }
+.archive-card.is-landscape { grid-column:span 2; }
+.archive-image-wrap { display:flex; width:100%; min-height:4rem; align-items:center; justify-content:center; overflow:hidden; border-radius:8px; background:linear-gradient(145deg,#1e0d13,#090609); }
+.archive-image-wrap img { display:block; width:100%; max-width:100%; height:auto; object-fit:contain; object-position:center; border-radius:8px; }
+.archive-card figcaption { padding:.43rem .24rem .2rem; color:rgba(255,232,225,.9); font-family:var(--read); font-size:clamp(.63rem,1.15vw,.76rem); line-height:1.48; overflow-wrap:anywhere; }
+.archive-card:hover { border-color:rgba(245,210,122,.55); transform:translateY(-2px); }
+.archive-card:focus-visible { outline:2px solid var(--ann-gold); outline-offset:3px; }
+@keyframes archiveCardIn { to { opacity:1; transform:translateY(0); } }
+.archive-changing { opacity:.82; }
+.archive-more { display:block; width:min(100%,22rem); margin:1rem auto .1rem; padding:.72rem 1rem; border:1px solid rgba(245,210,122,.42); border-radius:999px; background:linear-gradient(105deg,#8b0a1f,#d72649); box-shadow:0 8px 24px rgba(139,10,31,.25); color:#fff4e8; font-size:.78rem; font-weight:600; letter-spacing:.02em; cursor:pointer; }
+.archive-more[hidden] { display:none; }
+.archive-more:focus-visible { outline:2px solid var(--ann-gold-light); outline-offset:3px; }
+.archive-empty { margin:.8rem auto .2rem; padding:1rem; border:1px dashed rgba(245,210,122,.28); border-radius:15px; background:rgba(255,255,255,.025); text-align:center; }
+.archive-empty[hidden] { display:none; }
+.archive-empty>span { display:block; color:var(--ann-gold); font-size:1.6rem; }
+.archive-empty b { color:#fff0d8; font-family:var(--serif); font-size:1rem; font-weight:500; }
+.archive-empty p { max-width:30rem; margin:.35rem auto 0; color:rgba(255,225,224,.68); font-size:.7rem; line-height:1.55; }
+.archive-footnote { margin:.85rem auto 0; color:rgba(255,224,207,.54); font-size:.56rem; letter-spacing:.04em; text-align:center; line-height:1.5; }
+.archive-card.is-missing { cursor:default; opacity:1; transform:none; }
+.archive-card.is-missing:hover { border-color:rgba(245,210,122,.2); transform:none; }
+.archive-missing { display:flex; min-height:8rem; height:100%; width:100%; flex-direction:column; align-items:center; justify-content:center; gap:.4rem; padding:.7rem; text-align:center; color:rgba(255,232,225,.64); background:radial-gradient(circle at 50% 35%,rgba(190,40,73,.16),transparent 72%),linear-gradient(145deg,#1e0d13,#090609); }
+.archive-missing span { color:var(--ann-gold); font-size:1.5rem; }
+.archive-missing b { max-width:15rem; font-size:.56rem; font-weight:500; line-height:1.45; }
+@media (max-width:900px) { .archive-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:600px) {
+  .memory-archive { width:calc(100% - 1rem); margin:1rem auto; padding:.8rem .55rem 1rem; border-radius:17px; }
+  .archive-cover { width:min(100%,320px); margin-bottom:.58rem; border-radius:10px; }
+  .archive-header { margin:0 auto .62rem; }
+  .archive-eyebrow { font-size:.49rem; letter-spacing:.13em; }
+  .archive-header h2 { max-width:100%; margin:.2rem auto 0; font-size:clamp(1.25rem,5.7vw,1.75rem); line-height:1.12; }
+  .archive-timeline { grid-template-columns:repeat(11,minmax(0,1fr)); gap:0; margin:0 auto .58rem; padding:.16rem 0 .36rem; }
+  .archive-timeline::before { top:.79rem; left:3%; right:3%; }
+  .archive-year-btn { min-height:2rem; gap:.27rem; padding:0; }
+  .archive-year-btn span { font-size:clamp(.42rem,1.95vw,.55rem); letter-spacing:-.025em; }
+  .archive-year-btn i { width:6px; height:6px; box-shadow:0 0 0 2px rgba(245,210,122,.055); }
+  .archive-year-btn[aria-pressed="true"] i { width:8px; height:8px; box-shadow:0 0 0 3px rgba(245,210,122,.12),0 0 10px rgba(230,57,80,.7); }
+  .archive-year-head { align-items:center; gap:.45rem; margin:0; padding-top:.58rem; }
+  .archive-year-copy>span { font-size:.43rem; letter-spacing:.12em; }
+  .archive-year-copy h3 { font-size:clamp(1.9rem,8.8vw,2.55rem); }
+  .archive-year-copy p { margin-top:.13rem; font-size:.76rem; line-height:1.2; }
+  .archive-year-count { max-width:43%; padding:.28rem .42rem; font-size:.48rem; }
+  .archive-note { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin:.38rem 0 .58rem; font-size:.66rem; line-height:1.48; }
+  .archive-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.48rem; }
+  .archive-card { padding:.28rem .28rem .24rem; border-radius:9px; }
+  .archive-card.is-landscape { grid-column:span 2; }
+  .archive-image-wrap { min-height:3.6rem; border-radius:6px; }
+  .archive-image-wrap img { border-radius:6px; }
+  .archive-card figcaption { padding:.34rem .15rem .16rem; font-size:.59rem; line-height:1.38; }
+  .archive-more { margin:.7rem auto .05rem; padding:.62rem .8rem; font-size:.72rem; }
+  .archive-empty { margin:.6rem auto .1rem; padding:.8rem; }
+  .archive-empty b { font-size:.9rem; }
+  .archive-empty p { font-size:.63rem; }
+  .archive-footnote { margin-top:.65rem; font-size:.49rem; }
+  .archive-missing { min-height:6.8rem; padding:.5rem; }
+  .archive-missing b { font-size:.5rem; }
+}
+@media (max-width:360px) {
+  .memory-archive { padding-left:.45rem; padding-right:.45rem; }
+  .archive-year-btn span { font-size:.4rem; }
+  .archive-year-count { max-width:45%; font-size:.45rem; }
+  .archive-card figcaption { font-size:.55rem; }
+}
+@media (prefers-reduced-motion:reduce) { .archive-card,.archive-year-btn { animation:none; opacity:1; transform:none; transition:none; } }
+.lite .archive-card { animation:none; opacity:1; transform:none; }

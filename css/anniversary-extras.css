@@ -1,0 +1,284 @@
+/* Anniversary feature layer: Season 2 finale and personal voice note. */
+:root {
+  --ann-gold: #f5d27a;
+  --ann-gold-light: #fff0c5;
+  --ann-wine: #310812;
+  --ann-red: #e63950;
+}
+
+/* C · Season 2 ending card and B · personal voice message */
+.endc {
+  position: relative;
+  isolation: isolate;
+  width: min(92vw, 35rem);
+  max-width: 100%;
+  margin: 1.7rem auto 0;
+  padding: clamp(1.55rem, 5vw, 2.45rem) clamp(1rem, 4.3vw, 2.2rem) 1.6rem;
+  overflow: hidden;
+  border: 1px solid rgba(245,210,122,.48);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% -12%, rgba(245,210,122,.21), transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(139,10,31,.32), transparent 48%),
+    linear-gradient(150deg, #17060c, #0b0508 55%, #200710);
+  box-shadow: 0 24px 75px rgba(0,0,0,.55), 0 0 56px rgba(230,57,80,.22), inset 0 1px rgba(255,255,255,.06);
+  text-align: center;
+}
+.endc::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 10px;
+  border: 1px solid rgba(245,210,122,.12);
+  border-radius: 20px;
+  pointer-events: none;
+}
+.season-orbit {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto .8rem;
+  place-items: center;
+  border: 1px solid rgba(245,210,122,.45);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,210,122,.2), rgba(139,10,31,.17));
+  color: var(--ann-gold-light);
+  font-size: 1.65rem;
+  box-shadow: 0 0 30px rgba(245,210,122,.18);
+  animation: seasonOrbit 8s ease-in-out infinite;
+}
+@keyframes seasonOrbit { 50% { transform: rotate(180deg) scale(1.06); box-shadow: 0 0 40px rgba(245,210,122,.32); } }
+.endc .season-kicker {
+  display: block;
+  color: var(--ann-gold);
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+}
+#wed .endc > .script { font-family: var(--script); font-style: normal; font-weight: 400; color: #f5c2c5; font-size: clamp(2.1rem, 7.7vw, 3.15rem); line-height: 1.08; margin: .65rem auto .45rem; text-wrap: balance; text-shadow: 0 0 28px rgba(230,57,80,.42); }
+.endc > .script {
+  margin: .65rem auto .45rem;
+  color: #f5c2c5;
+  font-size: clamp(2.1rem, 7.7vw, 3.15rem);
+  line-height: 1.08;
+  text-wrap: balance;
+  text-shadow: 0 0 28px rgba(230,57,80,.42);
+}
+.endc .season-intro {
+  max-width: 26rem;
+  margin: .8rem auto 0;
+  color: rgba(255,232,226,.85);
+  font-family: var(--read);
+  font-size: clamp(.78rem, 2vw, .92rem);
+  line-height: 1.75;
+  text-wrap: balance;
+}
+.season-divider {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  width: min(100%, 22rem);
+  margin: 1.25rem auto 1.15rem;
+  color: var(--ann-gold);
+  font-size: .7rem;
+}
+.season-divider::before,.season-divider::after { content:""; height:1px; flex:1; background:linear-gradient(90deg,transparent,rgba(245,210,122,.58)); }
+.season-divider::after { transform:scaleX(-1); }
+.season-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .65rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.endc .season-panel {
+  min-width: 0;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .33rem;
+  padding: .85rem .55rem;
+  border: 1px solid rgba(245,210,122,.2);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+}
+.endc .season-panel b {
+  color: rgba(255,225,190,.69);
+  font-family: var(--sans);
+  font-size: .57rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+}
+.endc .season-panel strong {
+  color: #fff0ca;
+  font-family: var(--serif);
+  font-size: clamp(.93rem, 2.9vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.endc .season-panel span {
+  color: rgba(255,228,222,.66);
+  font-size: .65rem;
+  line-height: 1.45;
+}
+.endc .season-two {
+  border-color: rgba(245,210,122,.52);
+  background: radial-gradient(circle at 50% 0%, rgba(245,210,122,.15), transparent 72%), linear-gradient(145deg, rgba(139,10,31,.28), rgba(255,255,255,.025));
+  box-shadow: inset 0 0 24px rgba(245,210,122,.045), 0 0 24px rgba(245,197,66,.08);
+}
+.endc .season-two strong {
+  background: linear-gradient(100deg, #fff0c5, #e9b751, #fff8dd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: clamp(.9rem, 2.8vw, 1.12rem);
+}
+.endc .season-next-line {
+  margin: 1.05rem auto 1.15rem;
+  color: var(--ann-gold);
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+}
+.voice-note {
+  display: grid;
+  grid-template-columns: 42px minmax(0,1fr);
+  gap: .3rem .75rem;
+  align-items: center;
+  margin: 1.1rem 0 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(244,182,194,.24);
+  border-radius: 18px;
+  background: linear-gradient(130deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  text-align: left;
+  box-shadow: inset 0 1px rgba(255,255,255,.04);
+}
+.voice-note-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  grid-row: 1;
+  place-items: center;
+  border: 1px solid rgba(245,210,122,.32);
+  border-radius: 13px;
+  background: rgba(139,10,31,.3);
+  font-size: 1.2rem;
+}
+.voice-note-copy { min-width: 0; }
+.voice-note-copy small {
+  color: var(--ann-gold);
+  font-size: .52rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+}
+.voice-note-copy h4 {
+  margin-top: .12rem;
+  color: #fff0e8;
+  font-family: var(--serif);
+  font-size: clamp(.95rem, 3.3vw, 1.18rem);
+  font-weight: 500;
+}
+.voice-note-copy p {
+  margin-top: .18rem;
+  color: rgba(255,226,226,.64);
+  font-size: .66rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.voice-play {
+  display: flex;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  margin: .6rem 0 .15rem;
+  padding: .65rem .9rem;
+  border: 1px solid rgba(245,210,122,.32);
+  border-radius: 12px;
+  background: linear-gradient(105deg, #7b0b22, #ad1735);
+  box-shadow: 0 6px 20px rgba(139,10,31,.18);
+  color: white;
+  font-size: .78rem;
+}
+.voice-play span { color: var(--ann-gold-light); font-size: .9rem; }
+.voice-play:disabled { border-color: rgba(255,255,255,.08); background: rgba(255,255,255,.055); box-shadow: none; color: rgba(255,239,236,.58); cursor: not-allowed; }
+.voice-play:disabled span { color: rgba(245,210,122,.65); }
+.voice-progress {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 3px;
+  margin-top: .3rem;
+  overflow: hidden;
+  border-radius: 9px;
+  background: rgba(255,255,255,.13);
+}
+.voice-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #c11236, #f5d27a);
+  transition: width .15s linear;
+}
+.voice-meta {
+  display: flex;
+  grid-column: 1 / -1;
+  width: 100%;
+  justify-content: space-between;
+  gap: .5rem;
+  color: rgba(255,228,222,.52);
+  font-size: .5rem;
+  letter-spacing: .11em;
+}
+.voice-meta span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.season-replay { margin-top: .45rem; }
+.endc #rep {
+  min-height: 44px;
+  padding: .7rem 1.45rem;
+  border: 1px solid rgba(245,210,122,.28);
+  background: rgba(255,255,255,.055);
+  box-shadow: none;
+  color: #ffe9df;
+  font-size: .8rem;
+}
+.endc #rep:hover { background: rgba(255,255,255,.1); }
+
+@media (max-width: 767px) {
+
+  .endc { width: 100%; padding: 1.45rem .9rem 1.35rem; border-radius: 23px; }
+  .endc::before { inset: 7px; border-radius: 17px; }
+  .season-orbit { width: 47px; height: 47px; font-size: 1.4rem; }
+  .endc .season-kicker { font-size: .5rem; letter-spacing: .16em; }
+  .endc > .script { font-size: clamp(2.05rem, 9.4vw, 2.7rem); }
+  .endc .season-intro { font-size: .75rem; line-height: 1.7; }
+  .season-panels { gap: .45rem; }
+  .endc .season-panel { min-height: 105px; padding: .7rem .35rem; border-radius: 13px; }
+  .endc .season-panel b { font-size: .49rem; letter-spacing: .12em; }
+  .endc .season-panel strong { font-size: clamp(.8rem, 3.8vw, 1rem); }
+  .endc .season-panel span { font-size: .59rem; }
+  .endc .season-next-line { font-size: .5rem; letter-spacing: .13em; }
+  .voice-note { grid-template-columns: 36px minmax(0,1fr); gap: .25rem .55rem; padding: .8rem .72rem; border-radius: 15px; }
+  .voice-note-icon { width: 36px; height: 36px; border-radius: 11px; font-size: 1.05rem; }
+  .voice-note-copy small { font-size: .47rem; letter-spacing: .12em; }
+  .voice-note-copy h4 { font-size: .98rem; }
+  .voice-note-copy p { font-size: .61rem; }
+  .voice-play { min-height: 42px; font-size: .72rem; }
+  .voice-meta { font-size: .45rem; letter-spacing: .08em; }
+}
+
+@media (max-width: 360px) {
+
+  .season-panels { grid-template-columns: 1fr; }
+  .endc .season-panel { min-height: 82px; }
+  .voice-note { padding: .7rem .6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-orbit { animation: none; }
+
+}
+.lite .season-orbit { animation: none; }

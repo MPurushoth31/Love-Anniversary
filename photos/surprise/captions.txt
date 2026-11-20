@@ -1,0 +1,3 @@
+# Surprise-me photos: put any photos in this folder.
+# One line per photo:  filename-without-extension – caption
+# example:  my_photo_01 – Oru chinna surprise ❤️

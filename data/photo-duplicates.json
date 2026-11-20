@@ -1,0 +1,20 @@
+{
+  "summary": {
+    "journey": {
+      "source_files": 25,
+      "unique_files": 25,
+      "duplicates_removed": 0
+    },
+    "moments": {
+      "source_files": 132,
+      "unique_files": 132,
+      "duplicates_removed": 0
+    },
+    "surprise": {
+      "source_files": 0,
+      "unique_files": 0,
+      "duplicates_removed": 0
+    }
+  },
+  "duplicates": []
+}

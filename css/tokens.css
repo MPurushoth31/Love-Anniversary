@@ -1,0 +1,35 @@
+/* ===== DESIGN TOKENS: change look & feel here ===== */
+:root{
+ /* colour roles */
+ --c-bg:#0b0508; --c-surface:#1c0509; --c-surface-2:#2a1216;
+ --c-wine:#8B0A1F; --c-red:#E63950; --c-rose:#f4b6c2; --c-gold:#f5c542; --c-gold-soft:#ffd978;
+ --c-ink:#f6dcdc; --c-paper:#f6ebe3; --c-paper-ink:#7a2a38;
+ /* spacing */
+ --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:40px; --s-7:64px;
+ /* radius */
+ --r-sm:8px; --r-md:16px; --r-lg:24px; --r-pill:999px;
+ /* glow + shadow */
+ --g-1:0 0 20px rgba(245,197,66,.25); --g-2:0 0 40px rgba(245,197,66,.45); --g-3:0 0 70px rgba(230,57,80,.55);
+ --sh-card:0 20px 50px rgba(0,0,0,.7);
+ /* motion */
+ --t-fast:.2s; --t-base:.5s; --t-slow:1.2s; --t-cine:2.4s;
+ --e-smooth:cubic-bezier(.22,.61,.36,1); --e-spring:cubic-bezier(.2,.9,.3,1.3); --e-snap:cubic-bezier(.4,0,.2,1);
+ /* type scale */
+ --fs-xs:.72rem; --fs-sm:.85rem; --fs-md:1rem; --fs-lg:1.25rem; --fs-xl:1.7rem; --fs-2xl:2.6rem; --fs-display:clamp(3rem,14vw,5rem);
+ /* colour-script defaults (per act below) */
+ --act-grain:.05; --act-vig:.3; --act-bokeh:rgba(245,197,66,.4); --act-age-sat:1;
+}
+/* ===== COLOUR SCRIPT: the whole film changes mood act by act ===== */
+body[data-act="friends"]{--act-grain:.06;--act-vig:.28;--act-bokeh:rgba(255,184,100,.42)}
+body[data-act="heart"]  {--act-grain:.05;--act-vig:.55;--act-bokeh:rgba(230,57,80,.45)}
+body[data-act="joy"]    {--act-grain:.04;--act-vig:.22; --act-bokeh:rgba(255,170,160,.45)}
+body[data-act="sorry"]  {--act-grain:.07;--act-vig:.45; --act-bokeh:rgba(140,170,230,.35)}
+body[data-act="fin"]    {--act-grain:.03;--act-vig:.18;--act-bokeh:rgba(255,215,120,.55)}
+#acts{position:fixed;inset:0;z-index:-1;pointer-events:none}
+#acts .al{position:absolute;inset:0;opacity:0;transition:opacity var(--t-cine) var(--e-smooth)}
+.al-friends{background:radial-gradient(120% 80% at 50% 0%,rgba(150,90,30,.38),transparent 62%),radial-gradient(100% 70% at 50% 100%,rgba(90,48,14,.32),transparent 62%)}
+.al-heart{background:radial-gradient(90% 70% at 50% 50%,rgba(170,10,35,.5),rgba(25,0,6,.2) 72%)}
+.al-joy{background:radial-gradient(110% 80% at 25% 0%,rgba(255,160,150,.24),transparent 62%),radial-gradient(100% 70% at 85% 100%,rgba(245,197,66,.16),transparent 62%)}
+.al-sorry{background:radial-gradient(120% 90% at 50% 40%,rgba(70,92,150,.32),transparent 72%)}
+.al-fin{background:radial-gradient(120% 90% at 50% 15%,rgba(245,197,66,.3),transparent 66%),radial-gradient(90% 60% at 50% 100%,rgba(230,57,80,.18),transparent 62%)}
+body[data-act="friends"] .al-friends,body[data-act="heart"] .al-heart,body[data-act="joy"] .al-joy,body[data-act="sorry"] .al-sorry,body[data-act="fin"] .al-fin{opacity:1}
